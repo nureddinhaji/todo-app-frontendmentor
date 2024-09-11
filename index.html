@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TODO APP</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400&700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <main class="app">
+            <header class="app__header">
+                <h1 class="app__title">
+                    TODO
+                </h1>
+                <div class="app__themebutton"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26"><path fill="#FFF" fill-rule="evenodd" d="M13 0c.81 0 1.603.074 2.373.216C10.593 1.199 7 5.43 7 10.5 7 16.299 11.701 21 17.5 21c2.996 0 5.7-1.255 7.613-3.268C23.22 22.572 18.51 26 13 26 5.82 26 0 20.18 0 13S5.82 0 13 0z"/></svg></div>
+            </header>
+            <div class="app__body">
+                <div class="app__task app__newtaskinput">
+                    <button class="app__taskcheck" disabled></button>
+                    <input type="text" name="newtask" id="newtask" class="app__newtask app__input" placeholder="Add new task">
+                </div>
+                <div class="app__tasks">
+                    <div class="app__task">
+                        <button class="app__taskcheck" disabled></button>
+                        <input type="text" name="newtask" id="newtask" class="app__newtask app__input" placeholder="Add new task">
+                    </div>
+                    <div class="app__task">
+                        <button class="app__taskcheck" disabled></button>
+                        <input type="text" name="newtask" id="newtask" class="app__newtask app__input" placeholder="Add new task">
+                    </div>
+                    <div class="app__task">
+                        <button class="app__taskcheck" disabled></button>
+                        <input type="text" name="newtask" id="newtask" class="app__newtask app__input" placeholder="Add new task">
+                    </div>
+                    <footer class="app__control">
+                        <p class="app__leftcount">
+                            5 items left
+                        </p>
+                        <div class="app__filter">
+                            <button class="app__filterbutton app__filterbutton--all">All</button>
+                            <button class="app__filterbutton app__filterbutton--acitve">Active</button>
+                            <button class="app__filterbutton app__filterbutton--completed">Completed</button>
+                        </div>
+                        <button class="app__clearcompleted">Clear Completed</button>
+                    </footer>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+
+@use "./sass/_reset";
+
+.container {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    background-image: url("/images/bg-desktop-light.jpg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    padding: 8rem 2rem;
+}
+
+.app {
+    min-width: 54rem;
+    display: flex;
+    flex-direction: column;
+    gap: 3.5rem;
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        font-size: 2.5rem;
+        color: white;
+    }
+    &__title {
+        font-weight: 700;
+        font-size: 4rem;
+        letter-spacing: 1.5rem;
+    }
+    &__body {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        > .app__task {
+            border-radius: .5rem;
+        }
+    }
+    &__tasks {
+        background-color: white;
+        border-radius: .5rem;
+        overflow: hidden;
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+        & .app__task {
+            border-block-end: 0.1rem solid #e4e5f1;
+        }
+    }
+    &__task {
+        padding: 2.2rem 1.8rem;
+        background-color: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+    }
+    &__input {
+        flex: 1;
+    }
+    &__taskcheck {
+        width: 2.5rem;
+        height: 2.5rem;
+        border-radius: 50%;
+        border: .1rem solid #e4e5f1;
+        transition: border 0.3s ease;
+        &:hover {
+            border: .1rem solid transparent;
+        border-radius: 50%;
+        background-image: linear-gradient(white, white),
+                      linear-gradient(140deg, rgba(87,221,255,1) 0%, rgba(192,88,243,1) 100%);
+        background-origin: border-box;
+        background-clip: padding-box, border-box;
+        }
+    }
+    &__control {
+        display: flex;
+        justify-content: space-between;
+        padding: 1.8rem;
+        font-size: 1.4rem;
+        color: hsl(236, 9%, 61%);
+        position: relative;
+    }
+    &__filter {
+        font-weight: 700;
+        display: flex;
+        gap: 2rem;
+        position: absolute;
+        inset-inline-start: 50%;
+        transform: translateX(-50%);
+        &button {
+            color: hsl(236, 9%, 61%);
+        }
+    }
+    .app__clearcompleted {
+        color: hsl(236, 9%, 61%);
+    }
+    
+}
