@@ -45,6 +45,18 @@
         & .app__task {
             border-block-end: 0.1rem solid #e4e5f1;
         }
+        &-empty {
+            padding: 4rem;
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+            justify-content: center;
+            align-items: center;
+            &image {
+                width: 25rem;
+                height: 100%;
+            }
+        }
     }
     &__task {
         padding: 2.2rem 1.8rem;
