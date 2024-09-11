@@ -37,7 +37,7 @@
             border-radius: .5rem;
         }
     }
-    &__tasks {
+    &__usertasks {
         background-color: white;
         border-radius: .5rem;
         overflow: hidden;
@@ -45,6 +45,8 @@
         & .app__task {
             border-block-end: 0.1rem solid #e4e5f1;
         }
+    }
+    &__tasks {
         &-empty {
             padding: 4rem;
             display: flex;
@@ -55,6 +57,19 @@
             &image {
                 width: 25rem;
                 height: 100%;
+            }
+        }
+        &--active {
+            & .app__task--complated {
+                display: none;
+            }
+        }
+        &--complated {
+            & .app__task {
+                display: none;
+            }
+            & .app__task--complated {
+                display: flex;
             }
         }
     }
@@ -129,9 +144,12 @@
         transform: translateX(-50%);
         &button {
             color: hsl(236, 9%, 61%);
+            &--activeted {
+                color: hsl(220, 98%, 61%);
+            }
         }
     }
-    .app__clearcompleted {
+    .app__clearcomplated {
         color: hsl(236, 9%, 61%);
     }
     
