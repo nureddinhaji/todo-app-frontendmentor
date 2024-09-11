@@ -69,6 +69,19 @@
             visibility: visible;
             opacity: 1;
         }
+        &--complated {
+            .app__taskcheck {
+                background-image: linear-gradient(140deg, rgba(87,221,255,1) 0%, rgba(192,88,243,1) 100%);
+                &:hover {
+                    background-image: linear-gradient(140deg, rgba(87,221,255,1) 0%, rgba(192,88,243,1) 100%),
+                      linear-gradient(140deg, rgba(87,221,255,1) 0%, rgba(192,88,243,1) 100%);
+                }
+            }
+            .app__input {
+                text-decoration: line-through;
+                color: hsl(233, 11%, 84%);
+            }
+        }
     }
     &__input {
         flex: 1;
@@ -95,6 +108,9 @@
         visibility: hidden;
         opacity: 0;
         transition: .3s;
+        & img {
+            pointer-events: none;
+        }
     }
     &__control {
         display: flex;
