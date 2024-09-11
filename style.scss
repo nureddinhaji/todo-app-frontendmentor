@@ -7,7 +7,7 @@
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    background-image: url("/images/bg-desktop-light.jpg");
+    background-image: url("./images/bg-desktop-light.jpg");
     background-size: contain;
     background-repeat: no-repeat;
     padding: 8rem 2rem;
@@ -53,6 +53,10 @@
         justify-content: center;
         align-items: center;
         gap: 1rem;
+        &:hover > &delete {
+            visibility: visible;
+            opacity: 1;
+        }
     }
     &__input {
         flex: 1;
@@ -71,6 +75,14 @@
         background-origin: border-box;
         background-clip: padding-box, border-box;
         }
+    }
+    &__taskdelete {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        visibility: hidden;
+        opacity: 0;
+        transition: .3s;
     }
     &__control {
         display: flex;
