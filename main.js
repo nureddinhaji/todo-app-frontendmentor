@@ -31,6 +31,7 @@ newTaskInput.addEventListener("keydown", (e) => {
 // Function to add the task from new task input to the task list
 function addTask() {
     const newTask = newTaskInput.value;
+    if(newTask === "") return
     const newTaskObj = { task: newTask, checked: false };
     createTaskElement(newTaskObj);
     addTaskToLocalStorage(storedTasks(), newTaskObj);
@@ -146,6 +147,16 @@ function clearComplatedTasks(tasks) {
 // Add event listener to clear complated button
 document.querySelector(".app__clearcomplated").addEventListener("click", () => {
     clearComplatedTasks(storedTasks());
+});
+
+// Function for toggle theme
+function toggleTheme() {
+    document.body.classList.toggle("dark");
+}
+
+// Add event listener to toggle theme
+document.querySelector(".app__themebutton").addEventListener("click", () => {
+    toggleTheme();
 });
 
 //----------------------------------------------------------

@@ -1,16 +1,44 @@
 
 @use "./sass/_reset";
 
+$veryDarkBlue : hsl(235, 21%, 11%);
+$veryDarkDesaturatedBlue : hsl(235, 24%, 19%);
+
+:root {
+    --countainer-background: url("./images/bg-desktop-light.jpg");
+    --container-background-color: #fff;
+    --task-background: #fff;
+    --theme-button-image: url("./images/icon-moon.svg");
+    --task-bottom-border-color: hsl(236, 33%, 92%);
+    --task-text-color: hsl(235, 19%, 35%);
+    --task-complated-text-color: hsl(233, 11%, 84%);
+    --control-text-color: hsl(236, 9%, 61%);
+    --control-text-hover-color: #{$veryDarkDesaturatedBlue}; 
+}
+
+.dark {
+    --countainer-background: url("./images/bg-desktop-dark.jpg");
+    --container-background-color: #{$veryDarkBlue};
+    --task-background: #{$veryDarkDesaturatedBlue};
+    --theme-button-image: url("./images/icon-sun.svg");
+    --task-bottom-border-color: hsl(237, 14%, 26%);
+    --task-text-color: hsl(234, 39%, 85%);
+    --task-complated-text-color: hsl(233, 14%, 35%);
+    --control-text-color: hsl(233, 14%, 35%);
+    --control-text-hover-color: hsl(234, 39%, 85%);
+}
+
 .container {
     width: 100%;
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    background-image: url("./images/bg-desktop-light.jpg");
+    background-image: var(--countainer-background);
     background-size: contain;
     background-repeat: no-repeat;
     padding: 8rem 2rem;
+    background-color: var(--container-background-color);
 }
 
 .app {
@@ -21,6 +49,7 @@
     &__header {
         display: flex;
         justify-content: space-between;
+        align-items: center;
         font-size: 2.5rem;
         color: white;
     }
@@ -28,6 +57,12 @@
         font-weight: 700;
         font-size: 4rem;
         letter-spacing: 1.5rem;
+    }
+    &__themebutton {
+        background-image: var(--theme-button-image);
+        background-size: 2.5rem;
+        width: 2.5rem;
+        height: 2.5rem;
     }
     &__body {
         display: flex;
@@ -38,12 +73,12 @@
         }
     }
     &__usertasks {
-        background-color: white;
+        background-color: var(--task-background);
         border-radius: .5rem;
         overflow: hidden;
         box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
         & .app__task {
-            border-block-end: 0.1rem solid #e4e5f1;
+            border-block-end: 0.1rem solid var(--task-bottom-border-color);
         }
     }
     &__tasks {
@@ -75,7 +110,7 @@
     }
     &__task {
         padding: 2.2rem 1.8rem;
-        background-color: #fff;
+        background-color: var(--task-background);
         display: flex;
         justify-content: center;
         align-items: center;
@@ -91,29 +126,38 @@
                     background-image: linear-gradient(140deg, rgba(87,221,255,1) 0%, rgba(192,88,243,1) 100%),
                       linear-gradient(140deg, rgba(87,221,255,1) 0%, rgba(192,88,243,1) 100%);
                 }
+                & img {
+                    display: block;
+                }
             }
             .app__input {
                 text-decoration: line-through;
-                color: hsl(233, 11%, 84%);
+                color: var(--task-complated-text-color);
             }
         }
     }
     &__input {
         flex: 1;
+        color: var(--task-text-color);
     }
     &__taskcheck {
         width: 2.5rem;
         height: 2.5rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         border-radius: 50%;
-        border: .1rem solid #e4e5f1;
-        transition: border 0.3s ease;
+        border: .1rem solid var(--task-bottom-border-color);
         &:hover {
             border: .1rem solid transparent;
-        border-radius: 50%;
-        background-image: linear-gradient(white, white),
-                      linear-gradient(140deg, rgba(87,221,255,1) 0%, rgba(192,88,243,1) 100%);
-        background-origin: border-box;
-        background-clip: padding-box, border-box;
+            border-radius: 50%;
+            background-image: linear-gradient(var(--task-background), var(--task-background)),
+                        linear-gradient(140deg, rgba(87,221,255,1) 0%, rgba(192,88,243,1) 100%);
+            background-origin: border-box;
+            background-clip: padding-box, border-box;
+        }
+        & img {
+            display: none;
         }
     }
     &__taskdelete {
@@ -132,7 +176,7 @@
         justify-content: space-between;
         padding: 1.8rem;
         font-size: 1.4rem;
-        color: hsl(236, 9%, 61%);
+        color: var(--control-text-color);
         position: relative;
     }
     &__filter {
@@ -143,14 +187,22 @@
         inset-inline-start: 50%;
         transform: translateX(-50%);
         &button {
-            color: hsl(236, 9%, 61%);
+            color: var(--control-text-color);
+            transition: .3s;
             &--activeted {
                 color: hsl(220, 98%, 61%);
             }
+            &:hover {
+                color: var(--control-text-hover-color);
+            }
         }
     }
-    .app__clearcomplated {
-        color: hsl(236, 9%, 61%);
+    &__clearcomplated {
+        color: var(--control-text-color);
+        transition: .3s;
+        &:hover {
+            color: var(--control-text-hover-color);
+        }
     }
     
 }
