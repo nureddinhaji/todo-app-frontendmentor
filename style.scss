@@ -6,18 +6,20 @@ $veryDarkDesaturatedBlue : hsl(235, 24%, 19%);
 
 :root {
     --countainer-background: url("./images/bg-desktop-light.jpg");
-    --container-background-color: #fff;
+    --container-mobile-background: url("./images/bg-mobile-light.jpg");
+    --container-background-color: hsl(0, 0%, 98%);
     --task-background: #fff;
     --theme-button-image: url("./images/icon-moon.svg");
     --task-bottom-border-color: hsl(236, 33%, 92%);
     --task-text-color: hsl(235, 19%, 35%);
     --task-complated-text-color: hsl(233, 11%, 84%);
     --control-text-color: hsl(236, 9%, 61%);
-    --control-text-hover-color: #{$veryDarkDesaturatedBlue}; 
+    --control-text-hover-color: #{$veryDarkDesaturatedBlue};
 }
 
 .dark {
     --countainer-background: url("./images/bg-desktop-dark.jpg");
+    --container-mobile-background: url("./images/bg-mobile-dark.jpg");
     --container-background-color: #{$veryDarkBlue};
     --task-background: #{$veryDarkDesaturatedBlue};
     --theme-button-image: url("./images/icon-sun.svg");
@@ -39,6 +41,9 @@ $veryDarkDesaturatedBlue : hsl(235, 24%, 19%);
     background-repeat: no-repeat;
     padding: 8rem 2rem;
     background-color: var(--container-background-color);
+    @media (max-width: 600px) {
+        background-image: var(--container-mobile-background);
+    }
 }
 
 .app {
@@ -46,6 +51,9 @@ $veryDarkDesaturatedBlue : hsl(235, 24%, 19%);
     display: flex;
     flex-direction: column;
     gap: 3.5rem;
+    @media (max-width: 600px) {
+        min-width: 100%;
+    }
     &__header {
         display: flex;
         justify-content: space-between;
@@ -70,18 +78,21 @@ $veryDarkDesaturatedBlue : hsl(235, 24%, 19%);
         gap: 2rem;
         > .app__task {
             border-radius: .5rem;
+            box-shadow: rgba(0, 0, 0, .1) 0px 4px 12px;
         }
     }
     &__usertasks {
         background-color: var(--task-background);
         border-radius: .5rem;
-        overflow: hidden;
         box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
         & .app__task {
             border-block-end: 0.1rem solid var(--task-bottom-border-color);
         }
     }
     &__tasks {
+        border-top-left-radius: 2rem;
+        border-top-right-radius: 2rem;
+        overflow: hidden;
         &-empty {
             padding: 4rem;
             display: flex;
@@ -189,6 +200,16 @@ $veryDarkDesaturatedBlue : hsl(235, 24%, 19%);
         position: absolute;
         inset-inline-start: 50%;
         transform: translateX(-50%);
+        @media (max-width: 600px) {
+            inset-block-end: -150%;
+            width: 100%;
+            justify-content: center;
+            padding: 2rem 2rem;
+            box-shadow: rgba(0,0,0,.1) 0px 4px 12px;
+            border-radius: .5rem;
+            font-size: 1.7rem;
+            background-color: var(--task-background);
+        }
         &button {
             color: var(--control-text-color);
             transition: .3s;
