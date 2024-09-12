@@ -50,6 +50,7 @@ function createTaskElement(task) {
     if (task.checked) {
         taskElement.classList.add("app__task--complated");
     }
+    taskElement.setAttribute("draggable", "true")
 
     const taskElementHtml = `<button class="app__taskcheck"><img src="./images/icon-check.svg"/></button>
     <input type="text" class="app__input" value="${task.task}" disabled>
@@ -66,10 +67,68 @@ function createTaskElement(task) {
     fragment.querySelector(".app__taskcheck").addEventListener("click", () => {
         checkTask(storedTasks(), task);
     });
+    addDragAndDrop(taskElement);
 
     taskElement.appendChild(fragment);
     taskList.insertAdjacentElement("afterbegin", taskElement);
 }
+
+//----------------------------------------------------------
+// Function for add drag and drop eventlistener
+//----------------------------------------------------------
+
+let draggedElement = null;
+function addDragAndDrop(taskElement) {
+
+    taskElement.addEventListener("dragstart", (e) => {
+        draggedElement = taskElement;
+        setTimeout(() => {
+            taskElement.classList.add("app__task--dragging");
+        }, 0);
+    });
+
+    taskElement.addEventListener("dragend", (e) => {
+        setTimeout(() => {
+            taskElement.classList.remove("app__task--dragging");
+            draggedElement = null;
+        }, 0);
+    });
+
+    taskElement.addEventListener("dragover", (e) => {
+        e.preventDefault();
+    });
+
+    taskElement.addEventListener("drop", (e) => {
+        e.preventDefault();
+        if (taskElement !== draggedElement && draggedElement) {
+            let tasks = storedTasks();
+            let draggedTask = getTaskFromElement(draggedElement);
+            let droppedTask = getTaskFromElement(taskElement);
+
+            swapTasksInLocalStorage(tasks, draggedTask, droppedTask);
+
+            createTasksFromLocalStorage(tasks);
+        }
+    });
+}
+
+// Helper function to get task data from the element
+function getTaskFromElement(element) {
+    const taskInput = element.querySelector(".app__input").value;
+    return { task: taskInput, checked: element.classList.contains("app__task--complated") };
+}
+
+// Helper function to swap tasks in localStorage
+function swapTasksInLocalStorage(tasks, task1, task2) {
+    const index1 = getTaskIndex(tasks, task1);
+    const index2 = getTaskIndex(tasks, task2);
+
+    [tasks[index1], tasks[index2]] = [tasks[index2], tasks[index1]];
+
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+}
+
+
 
 // Function for delete the task
 function deleteTask(tasks, task) {

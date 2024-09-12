@@ -135,6 +135,9 @@ $veryDarkDesaturatedBlue : hsl(235, 24%, 19%);
                 color: var(--task-complated-text-color);
             }
         }
+        &--dragging {
+            opacity: 0.2;
+        }
     }
     &__input {
         flex: 1;
