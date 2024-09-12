@@ -134,7 +134,19 @@ function addEventListenerToFilterButtons(buttonClass) {
         }`;
         selectActiveFilter(document.querySelector(buttonClass));
     });
+};
+
+// Function to clear complated tasks
+function clearComplatedTasks(tasks) {
+    const unComplatedTasks = tasks.filter((task) => !task.checked);
+    localStorage.setItem("tasks", JSON.stringify(unComplatedTasks));
+    createTasksFromLocalStorage(unComplatedTasks);
 }
+
+// Add event listener to clear complated button
+document.querySelector(".app__clearcomplated").addEventListener("click", () => {
+    clearComplatedTasks(storedTasks());
+});
 
 //----------------------------------------------------------
 // Local Storage Functions
