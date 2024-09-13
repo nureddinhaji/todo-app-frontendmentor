@@ -53,9 +53,6 @@ export function createTaskElement(task) {
 function deleteTask(tasks, task) {
     removeTaskFromLocalStorage(tasks, task);
     createTasksFromLocalStorage(tasks);
-    if (tasks.length === 0) {
-        addEmptyList();
-    }
 }
 
 // Function to check the task and make it complated
